@@ -31,12 +31,21 @@
 <!-- ============ NAV ============ -->
 <header id="nav">
   <a class="wordmark" href="#top">Visio&nbsp;Clara</a>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Primary">
     <a href="#approach">Approach</a>
     <a href="#mapping">Mapping</a>
     <a href="#recovery">Recovery</a>
   </nav>
-  <a class="btn btn-small" href="#contact">Book a consultation</a>
+  <a class="btn btn-small nav-cta" href="#contact">Book a consultation</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <a href="#approach">Approach</a>
+    <a href="#mapping">Mapping</a>
+    <a href="#recovery">Recovery</a>
+    <a class="btn btn-menu-cta" href="#contact">Book a consultation</a>
+  </div>
 </header>
 
 <main id="top">
