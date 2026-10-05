@@ -46,6 +46,35 @@
   window.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
 
+  /* ---------- Mobile hamburger menu ---------- */
+  var navToggle = document.querySelector(".nav-toggle");
+  var mobileMenu = document.getElementById("mobile-menu");
+  function closeMenu() {
+    if (!nav || !navToggle || !mobileMenu) return;
+    nav.classList.remove("menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open menu");
+    mobileMenu.hidden = true;
+  }
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener("click", function () {
+      var open = !nav.classList.contains("menu-open");
+      nav.classList.toggle("menu-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mobileMenu.hidden = !open;
+    });
+    mobileMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) closeMenu();
+    });
+  }
+
   /* ---------- HUD tick marks ---------- */
   (function buildHudTicks() {
     var g = document.getElementById("hud-ticks");
